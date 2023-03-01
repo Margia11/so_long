@@ -12,99 +12,110 @@
 
 #include "so_long.h"
 
-int	rectangular(t_game *imgs)
-{
-	int	i;
-
-	i = 1;
-	if (ft_strlen(imgs->map[i]) != ft_strlen(imgs->map[0]))
-	{
-		return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	wall(t_game *imgs)
+int	horizontalwall(t_game *imgs)
 {
 	int	i;
 	int	j;
-	int	len;
 
-	j = 0;
 	i = 0;
+	j = 0;
 	while (imgs->map[i])
 		i++;
-	while (imgs->map[0][j] != '\0' && imgs->map[i - 1][j] != '\0')
+	while (imgs->map[0][j])
 	{
-		if (imgs->map[0][j] != '1' || imgs->map[i - 1][j] != '1')
+		if (imgs->map[0][j] != '1' && imgs->map[i - 1][j] != '1')
+		{
+			printf("\ncazzo\n");
 			return (0);
+		}
 		j++;
 	}
-	i = 1;
-	len = ft_strlen(imgs->map[i]);
-	while (imgs->map[i])
+	return (1);
+}
+
+int	verticalwall(t_game *imgs)
+{
+	int	height;
+	int	width;
+
+	height = 0;
+	width = 1;
+
+	while (imgs->map[width][height])
+		height++;
+	while (imgs->map[width])
 	{
-		if (imgs->map[i][0] != '1' || imgs->map[i][len - 1] != '1')
+		if (imgs->map[width][0] != '1' && imgs->map[width][height - 1] != '1')
+		{
+			printf("aiaiaiai\n");
 			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	is_validate(t_game *imgs)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (imgs->map[i])
-	{
-		j = 0;
-		while (imgs->map[i][j])
-		{
-			if (imgs->map[i][j] != 'P' && imgs->map[i][j] != 'E' && imgs->map[i][j] != 'C'
-				&& imgs->map[i][j] != '0' && imgs->map[i][j] != '1' && imgs->map[i][j]!= 'N')
-				return (0);
-			j++;
 		}
-		i++;
+		width++;
 	}
 	return (1);
 }
 
-int	block_control(t_game *imgs)
+void	if_walls(t_game *imgs)
 {
-	int	i;
-	int	j;
+	int	verticalwalls;
+	int	horizontalwalls;
 
-	i = 0;
-	imgs->num_collect = 0;
-	imgs->num_player = 0;
-	imgs->num_exit = 0;
-	while (imgs->map[i])
+	verticalwalls = verticalwall(imgs);
+	horizontalwalls = horizontalwall(imgs);
+	if (!verticalwalls || !horizontalwalls)
 	{
-		j = 0;
-		while (imgs->map[i][j] != '\0')
-		{
-			if (imgs->map[i][j] == 'P')
-				imgs->num_player++;
-			if (imgs->map[i][j] == 'E')
-				imgs->num_exit++;
-			if (imgs->map[i][j] == 'C')
-				imgs->num_collect++;
-			j++;
-		}
-		i++;
+		write(1,"WallsMapInvalid\n", 19);
+		exit(1);
 	}
-	if (imgs -> num_player != 1 || imgs -> num_exit == 0 || imgs -> num_collect == 0)
-		return (0);
-	return (1);
 }
 
-int	map_check(t_game *imgs)
+void	count_checker(t_game *imgs, int width, int height)
 {
-	if ((rectangular(imgs) && wall(imgs) && is_validate(imgs) && (block_control(imgs))))
-		return (1);
-	return (0);
+	
+	if (imgs->map[width][height] != '1' &&
+		imgs->map[width][height] != '0' &&
+		imgs->map[width][height] != 'P' &&
+		imgs->map[width][height] != 'E' &&
+		imgs->map[width][height] != 'C' &&
+		imgs->map[width][height] != '\n')
+	{
+		write(1, "ErrorElements\n", 17);
+		handle_close_window(imgs);
+	}
+	if (imgs->map[width][height] == 'C')
+			imgs->num_collect++;
+	if (imgs->map[width][height] == 'P')
+			imgs->num_player++;
+	if (imgs->map[width][height] == 'E')
+			imgs->num_exit++;
+}
+
+void	character_valid(t_game *imgs)
+{
+	int	height;
+	int	width;
+	width = 0;
+	while (imgs->map[width])
+	{
+		height = 0;
+		while (imgs->map[width][height])
+		{
+			count_checker(imgs, width, height);
+			height++;
+		}
+		width++;
+	}
+	if ((imgs->num_player != 1 || imgs->num_collect == 0
+			|| imgs->num_exit != 1))
+	{
+		write(1, "InvalidElements\n", 19);
+		exit(1);
+	}
+}
+
+void	check_errors(t_game *imgs)
+{
+	if_walls(imgs);
+	character_valid(imgs);
+
 }

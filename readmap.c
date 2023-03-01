@@ -3,32 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   readmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andreamargiacchi <andreamargiacchi@stud    +#+  +:+       +#+        */
+/*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 10:01:27 by amargiac          #+#    #+#             */
-/*   Updated: 2023/02/27 19:57:19 by andreamargi      ###   ########.fr       */
+/*   Updated: 2023/03/01 16:36:36 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	read_map(char *path, t_game *imgs)
+char	**read_map(t_game *imgs, char **argv)
 {
 	int		fd;
 	char 	*line;
-	char	*s1;
-
-	s1 = "";
-	fd = open(path, O_RDONLY);
-	if (fd <= 0)
-		return ;
-	while (1)
-	{
-		line = get_next_line(fd);
-			if (!line)
-				return ;
-		s1 = ft_strjoin(s1, line);
-	}
-	imgs->map = ft_split(s1, '\n');
-	close (fd);
+	
+	line = malloc(sizeof(char) *10000000);
+	fd = open(argv[1], O_RDONLY);
+	read(fd, line, 10000000);
+	imgs->map = ft_split(line, '\n');
+	return(imgs->map);
 }

@@ -6,7 +6,7 @@
 #    By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 13:00:21 by amargiac          #+#    #+#              #
-#    Updated: 2023/02/28 17:10:00 by amargiac         ###   ########.fr        #
+#    Updated: 2023/03/01 12:59:12 by amargiac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,6 @@ SL_SRC	=	so_long.c\
  			map_checker.c \
 			imgs_selector.c \
 		 	close.c \
-			get_next_line.c \
-			get_next_line_utils.c \
 			movements.c \
 
 HEADER = so_long.h
@@ -45,7 +43,7 @@ MLX		=	./libmlx.dylib
 all:		$(NAME)
 
 $(NAME):	$(SL_OBJ) $(LIBFT)
-			$(CC) $(CFLAGS) -o $(NAME) $(SL_OBJ) $(LIBFT) $(MLX)
+			$(CC) $(CFLAGS) -o $(NAME) $(SL_OBJ) $(LIBFT)  $(MLX)
 
 $(LIBFT):
 		make -C $(LIBFT_PATH)

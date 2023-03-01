@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:47:35 by amargiac          #+#    #+#             */
-/*   Updated: 2023/02/28 16:50:57 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:02:37 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,7 @@
 #include <string.h>
 #include "./minilibx/mlx.h"
 #include "./libft/libft.h"
-#include "./get_next_line.h"
 
-typedef struct s_dic {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}				t_dic;
 
 typedef struct s_game
 {
@@ -45,12 +37,12 @@ typedef struct s_game
 	int		map_h;
 	int		img_w;
 	int		img_h;
-	t_dic	player;
-	t_dic	exit;
-	t_dic	collect;
-	t_dic	backg;
-	t_dic	enemy;
-	t_dic	wall;
+	void	*player;
+	void	*exit;
+	void	*collect;
+	void	*backg;
+	void	*enemy;
+	void	*wall;
 	int		num_player;
 	int		num_exit;
 	int		num_collect;
@@ -64,22 +56,21 @@ typedef struct s_game
 
 int			handle_close_window(t_game *imgs);
 int			handle_keypress(int keycode, t_game *imgs);
-void		read_map(char *path, t_game *imgs);
-int			rectangular(t_game *imgs);
-int			wall(t_game *imgs);
-int			is_validate(t_game *imgs);
-int			block_control(t_game *imgs);
-int			map_check(t_game *imgs);
+char		**read_map(t_game *imgs, char **argv);
 void		img_selector(t_game *imgs,int i, int j);
 void		render(t_game *imgs);
 void		img_selector2(t_game *imgs,int i, int j);
-t_dic		load_img(t_game *imgs, char *path);
-t_game		load_imgs(t_game *imgs);
+void		load_imgs(t_game *imgs);
 size_t		ft_strlen(const char *s);
 int 		moveright(t_game *imgs);
 int 		moveleft(t_game *imgs);
 int 		moveup(t_game *imgs);
 int			movedown(t_game *imgs);
 int 		movecheck(t_game *imgs);
-
+void		if_walls(t_game *imgs);
+int			verticalwall(t_game *imgs);
+int			horizontalwall(t_game *imgs);
+void		character_valid(t_game *imgs);
+void		check_errors(t_game *imgs);
+void		count_checker(t_game *imgs, int width, int height);
 #endif
