@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:41:34 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/01 18:25:55 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:14:58 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,11 @@ void	render(t_game *imgs)
 
 	i = 0;
 	imgs->num_collect = 0;
-	while (imgs->map[i])
+	while (i < imgs->map_h)
 	{
 		j = 0;
 		while (imgs->map[i][j])
 		{
-			printf("de' \n");
 			img_selector(imgs, i, j);
 			j++;
 		}

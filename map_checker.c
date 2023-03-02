@@ -25,11 +25,11 @@ int	horizontalwall(t_game *imgs)
 	{
 		if (imgs->map[0][j] != '1' && imgs->map[i - 1][j] != '1')
 		{
-			printf("\ncazzo\n");
 			return (0);
 		}
 		j++;
 	}
+	imgs->map_w = j;
 	return (1);
 }
 
@@ -39,7 +39,7 @@ int	verticalwall(t_game *imgs)
 	int	width;
 
 	height = 0;
-	width = 1;
+	width = 0;
 
 	while (imgs->map[width][height])
 		height++;
@@ -47,11 +47,11 @@ int	verticalwall(t_game *imgs)
 	{
 		if (imgs->map[width][0] != '1' && imgs->map[width][height - 1] != '1')
 		{
-			printf("aiaiaiai\n");
 			return (0);
 		}
 		width++;
 	}
+	imgs->map_h = width;
 	return (1);
 }
 
@@ -77,6 +77,7 @@ void	count_checker(t_game *imgs, int width, int height)
 		imgs->map[width][height] != 'P' &&
 		imgs->map[width][height] != 'E' &&
 		imgs->map[width][height] != 'C' &&
+		imgs->map[width][height] != 'N' &&
 		imgs->map[width][height] != '\n')
 	{
 		write(1, "ErrorElements\n", 17);
@@ -117,5 +118,4 @@ void	check_errors(t_game *imgs)
 {
 	if_walls(imgs);
 	character_valid(imgs);
-
 }

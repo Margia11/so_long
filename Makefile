@@ -6,7 +6,7 @@
 #    By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 13:00:21 by amargiac          #+#    #+#              #
-#    Updated: 2023/03/01 12:59:12 by amargiac         ###   ########.fr        #
+#    Updated: 2023/03/02 16:46:19 by amargiac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ CC		=	gcc
 
 CFLAGS	=	-Wall -Wextra -Werror -g
 
+LIBRARY =  -Lmlx -lmlx -framework OpenGL -framework AppKit -o
+
 RM		=	rm -f
 
 MLX		=	./libmlx.dylib
@@ -43,7 +45,7 @@ MLX		=	./libmlx.dylib
 all:		$(NAME)
 
 $(NAME):	$(SL_OBJ) $(LIBFT)
-			$(CC) $(CFLAGS) -o $(NAME) $(SL_OBJ) $(LIBFT)  $(MLX)
+			$(CC) $(SL_OBJ) $(LIBFT) $(LIBRARY) $(NAME)
 
 $(LIBFT):
 		make -C $(LIBFT_PATH)

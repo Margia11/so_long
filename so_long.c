@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:23:05 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/01 18:05:34 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:28:43 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ int	main(int argc, char **argv)
 	read_map(&imgs, argv);
 	check_errors(&imgs);
 	imgs.mlx = mlx_init(imgs.mlx);
-	imgs.win = mlx_new_window(imgs.mlx, 1920, 1080, "DioCane");
+	imgs.win = mlx_new_window(imgs.mlx, imgs.map_w * 64, imgs.map_h * 64, "DioCane");
 	load_imgs(&imgs);
 	render(&imgs);
-	printf("arriivato\n");
 	mlx_key_hook(imgs.win, movecheck, &imgs);
 	mlx_hook(imgs.win, 2, 0, handle_keypress, &imgs);
 	mlx_hook(imgs.win, 17, 0, handle_close_window, &imgs);
