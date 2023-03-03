@@ -6,7 +6,7 @@
 #    By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 13:00:21 by amargiac          #+#    #+#              #
-#    Updated: 2023/03/02 16:46:19 by amargiac         ###   ########.fr        #
+#    Updated: 2023/03/03 14:32:56 by amargiac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,9 @@ SL_SRC	=	so_long.c\
 			render.c \
  			map_checker.c \
 			imgs_selector.c \
-		 	close.c \
-			movements.c \
+		 	exit.c \
+			moves_player.c \
+			game.c \
 
 HEADER = so_long.h
 
@@ -33,7 +34,7 @@ CC		=	gcc
 
 CFLAGS	=	-Wall -Wextra -Werror -g
 
-LIBRARY =  -Lmlx -lmlx -framework OpenGL -framework AppKit -o
+LIBRARY =  -Lminilibx -lmlx -framework OpenGL -framework AppKit -o
 
 RM		=	rm -f
 

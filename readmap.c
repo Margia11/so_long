@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 10:01:27 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/02 12:33:55 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:42:18 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ char	**read_map(t_game *imgs, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	read(fd, line, 10000000);
 	imgs->map = ft_split(line, '\n');
+	free(line);
 	return(imgs->map);
 }

@@ -65,7 +65,7 @@ void	if_walls(t_game *imgs)
 	if (!verticalwalls || !horizontalwalls)
 	{
 		write(1,"WallsMapInvalid\n", 19);
-		exit(1);
+		exit_game(imgs);
 	}
 }
 
@@ -81,7 +81,7 @@ void	count_checker(t_game *imgs, int width, int height)
 		imgs->map[width][height] != '\n')
 	{
 		write(1, "ErrorElements\n", 17);
-		handle_close_window(imgs);
+		exit_game(imgs);
 	}
 	if (imgs->map[width][height] == 'C')
 			imgs->num_collect++;
@@ -110,7 +110,7 @@ void	character_valid(t_game *imgs)
 			|| imgs->num_exit != 1))
 	{
 		write(1, "InvalidElements\n", 19);
-		exit(1);
+		exit_game(imgs);
 	}
 }
 
