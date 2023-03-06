@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andreamargiacchi <andreamargiacchi@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:47:35 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/03 15:34:23 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:57:52 by andreamargi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_game
 	int		num_player;
 	int		num_exit;
 	int		num_collect;
+	int		move_counter;
 	int		p_x;
 	int		p_y;
 	int		e_x;
@@ -80,4 +81,5 @@ void		character_valid(t_game *imgs);
 void		check_errors(t_game *imgs);
 void		count_checker(t_game *imgs, int width, int height);
 int			exit_game(t_game *imgs);
+void		n_moves(t_game *imgs);
 #endif
