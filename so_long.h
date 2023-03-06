@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andreamargiacchi <andreamargiacchi@stud    +#+  +:+       +#+        */
+/*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:47:35 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/06 15:57:52 by andreamargi      ###   ########.fr       */
+/*   Updated: 2023/03/06 17:29:11 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,5 @@ void		character_valid(t_game *imgs);
 void		check_errors(t_game *imgs);
 void		count_checker(t_game *imgs, int width, int height);
 int			exit_game(t_game *imgs);
-void		n_moves(t_game *imgs);
+void		print_moves(t_game *imgs);
 #endif

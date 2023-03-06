@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:39:05 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/03 16:19:04 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:21:46 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	handle_keypress(int keycode, t_game *imgs)
 		movedown(imgs);
 	if (keycode == KEY_D || keycode == KEY_RIGHT)
 		moveright(imgs);
+  print_moves(imgs);
   return (0);
 }
 
@@ -36,12 +37,12 @@ int  movecheck(t_game *imgs, int x_dest, int y_dest)
        printf("YOU_LOST\n");
       return(exit_game(imgs));
     }
-    else if (imgs->map[y_dest][x_dest] == 'E' && imgs->num_collect == '0')
+    else if (imgs->map[y_dest][x_dest] == 'E' && imgs->num_collect != '0')
     {
       printf("YOU_WON\n");
       return(exit_game(imgs));
     }
-    else if (imgs->map[y_dest][x_dest] == 'E' && imgs->num_collect != '0')
+    else if (imgs->map[y_dest][x_dest] == 'E' && imgs->num_collect == '0')
 		  return (1);
     else if (imgs->map[y_dest][x_dest] == 'C')
       imgs->num_collect++;
