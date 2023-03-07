@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:39:05 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/06 17:21:46 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/07 11:47:23 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ int  movecheck(t_game *imgs, int x_dest, int y_dest)
        printf("YOU_LOST\n");
       return(exit_game(imgs));
     }
-    else if (imgs->map[y_dest][x_dest] == 'E' && imgs->num_collect != '0')
+    else if (imgs->map[y_dest][x_dest] == 'E' && imgs->num_collect == 0)
     {
       printf("YOU_WON\n");
       return(exit_game(imgs));
     }
-    else if (imgs->map[y_dest][x_dest] == 'E' && imgs->num_collect == '0')
-		  return (1);
+    else if (imgs->map[y_dest][x_dest] == 'E' && imgs->num_collect != 0)
+      return (0);
     else if (imgs->map[y_dest][x_dest] == 'C')
-      imgs->num_collect++;
+      imgs->num_collect--;
     imgs->map[imgs->p_y][imgs->p_x] = '0';
 	  imgs->p_x = x_dest;
 	  imgs->p_y = y_dest;

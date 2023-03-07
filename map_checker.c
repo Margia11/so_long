@@ -55,21 +55,23 @@ int	verticalwall(t_game *imgs)
 	return (1);
 }
 
-void	if_walls(t_game *imgs)
+int	if_walls(t_game *imgs)
 {
 	int	verticalwalls;
 	int	horizontalwalls;
 
 	verticalwalls = verticalwall(imgs);
 	horizontalwalls = horizontalwall(imgs);
-	if (!verticalwalls || !horizontalwalls)
+	if (verticalwalls == 0 || horizontalwalls == 0)
 	{
-		write(1,"WallsMapInvalid\n", 19);
-		exit_game(imgs);
+		printf("WallsMapInvalid\n");
+		//exit_game(imgs);
+		return(0);
 	}
+	return (1);
 }
 
-void	count_checker(t_game *imgs, int width, int height)
+int	count_checker(t_game *imgs, int width, int height)
 {
 	
 	if (imgs->map[width][height] != '1' &&
@@ -77,11 +79,11 @@ void	count_checker(t_game *imgs, int width, int height)
 		imgs->map[width][height] != 'P' &&
 		imgs->map[width][height] != 'E' &&
 		imgs->map[width][height] != 'C' &&
-		imgs->map[width][height] != 'N' &&
-		imgs->map[width][height] != '\n')
+		imgs->map[width][height] != 'N')
 	{
-		write(1, "ErrorElements\n", 17);
-		exit_game(imgs);
+		printf("ErrorElements\n");
+		//exit_game(imgs);
+		return(0);
 	}
 	if (imgs->map[width][height] == 'C')
 			imgs->num_collect++;
@@ -89,9 +91,10 @@ void	count_checker(t_game *imgs, int width, int height)
 			imgs->num_player++;
 	if (imgs->map[width][height] == 'E')
 			imgs->num_exit++;
+	return (1);
 }
 
-void	character_valid(t_game *imgs)
+int	character_valid(t_game *imgs)
 {
 	int	height;
 	int	width;
@@ -101,7 +104,8 @@ void	character_valid(t_game *imgs)
 		height = 0;
 		while (imgs->map[width][height])
 		{
-			count_checker(imgs, width, height);
+			if(count_checker(imgs, width, height) == 0)
+				return(0);
 			height++;
 		}
 		width++;
@@ -109,13 +113,8 @@ void	character_valid(t_game *imgs)
 	if ((imgs->num_player != 1 || imgs->num_collect == 0
 			|| imgs->num_exit != 1))
 	{
-		write(1, "InvalidElements\n", 19);
+		printf("InvalidElements\n");
 		exit_game(imgs);
 	}
-}
-
-void	check_errors(t_game *imgs)
-{
-	if_walls(imgs);
-	character_valid(imgs);
+	return (1);
 }

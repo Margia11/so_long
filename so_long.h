@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:47:35 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/06 17:29:11 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:29:31 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_game
 	void	*collect;
 	void	*backg;
 	void	*enemy;
+	void	*enemy1;
 	void	*wall;
 	int		num_player;
 	int		num_exit;
@@ -59,6 +60,7 @@ typedef struct s_game
 	int		p_y;
 	int		e_x;
 	int		e_y;
+	int		p_enemy;
 	int		loop;
 }	t_game;
 
@@ -74,12 +76,14 @@ int			moveleft(t_game *imgs);
 int			moveup(t_game *imgs);
 int			movedown(t_game *imgs);
 int 		movecheck(t_game *imgs, int x_dest, int y_dest);
-void		if_walls(t_game *imgs);
+int			if_walls(t_game *imgs);
 int			verticalwall(t_game *imgs);
 int			horizontalwall(t_game *imgs);
-void		character_valid(t_game *imgs);
-void		check_errors(t_game *imgs);
-void		count_checker(t_game *imgs, int width, int height);
+int			character_valid(t_game *imgs);
+int			check_errors(t_game *imgs);
+int			count_checker(t_game *imgs, int width, int height);
 int			exit_game(t_game *imgs);
 void		print_moves(t_game *imgs);
+// int 		animation(t_game *imgs);
+int			argv_check(char **argv);
 #endif

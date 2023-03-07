@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:03:28 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/07 11:40:39 by amargiac         ###   ########.fr       */
+/*   Created: 2023/03/07 15:12:27 by amargiac          #+#    #+#             */
+/*   Updated: 2023/03/07 16:24:04 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	exit_game(t_game *imgs)
+int	check_errors(t_game *imgs)
 {
-	free(imgs->map);
-	mlx_destroy_image(imgs->mlx, imgs->backg);
-	mlx_destroy_image(imgs->mlx, imgs->wall);
-	mlx_destroy_image(imgs->mlx, imgs->player);
-	mlx_destroy_image(imgs->mlx, imgs->collect);
-	mlx_destroy_image(imgs->mlx, imgs->exit);
-	mlx_destroy_image(imgs->mlx, imgs->enemy);
-	mlx_destroy_window(imgs->mlx, imgs->mlx_wind);
-	exit(0);
-	return (0);
+	if (if_walls(imgs)== 0 && character_valid(imgs) == 0)
+		return(0);
+	return(1);
 }

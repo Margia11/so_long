@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:41:34 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/02 16:14:58 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:59:55 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 void load_imgs(t_game *imgs)
 {
-	imgs->backg = mlx_xpm_file_to_image(imgs->mlx, "./images/backg.xpm", &imgs->img_w, &imgs->img_h);
-	imgs->player = mlx_xpm_file_to_image(imgs->mlx, "./images/player.xpm", &imgs->img_w, &imgs->img_h);
-	imgs->collect = mlx_xpm_file_to_image(imgs->mlx, "./images/collect.xpm", &imgs->img_w, &imgs->img_h);
-	imgs->exit = mlx_xpm_file_to_image(imgs->mlx, "./images/door1.xpm", &imgs->img_w, &imgs->img_h);
-	imgs->enemy = mlx_xpm_file_to_image(imgs->mlx, "./images/enemy.xpm", &imgs->img_w, &imgs->img_h);
-	imgs->wall = mlx_xpm_file_to_image(imgs->mlx, "./images/wall.xpm", &imgs->img_w, &imgs->img_h);
+	imgs->backg = mlx_xpm_file_to_image(imgs->mlx, "./images/backg.xpm", 
+	&imgs->img_w, &imgs->img_h);
+	imgs->player = mlx_xpm_file_to_image(imgs->mlx, "./images/player.xpm", 
+	&imgs->img_w, &imgs->img_h);
+	imgs->collect = mlx_xpm_file_to_image(imgs->mlx, "./images/collect.xpm", 
+	&imgs->img_w, &imgs->img_h);
+	imgs->exit = mlx_xpm_file_to_image(imgs->mlx, "./images/door1.xpm", 
+	&imgs->img_w, &imgs->img_h);
+	imgs->enemy = mlx_xpm_file_to_image(imgs->mlx, "./images/enemy.xpm", 
+	&imgs->img_w, &imgs->img_h);
+	// imgs->enemy1 = mlx_xpm_file_to_image(imgs->mlx, "./images/enemy1.xpm", 
+	// &imgs->img_w, &imgs->img_h);
+	imgs->wall = mlx_xpm_file_to_image(imgs->mlx, "./images/wall.xpm", 
+	&imgs->img_w, &imgs->img_h);
 	return ;
 }
 

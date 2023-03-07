@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 11:23:19 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/03 15:15:52 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:05:44 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	img_selector2(t_game *imgs,int i, int j)
 		}
 	else if (imgs->map[i][j] == 'C')
 	{
-		imgs->num_collect--;
+		imgs->num_collect++;
 		mlx_put_image_to_window(imgs->mlx, imgs->mlx_wind,
 			imgs->backg, j * 64, i * 64);
 		mlx_put_image_to_window(imgs->mlx, imgs->mlx_wind,
