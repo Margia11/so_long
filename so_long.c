@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:23:05 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/07 16:35:34 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:40:37 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	main(int argc, char **argv)
 	
 	if (argc != 2)
 	{
-		printf("argcInvalid");
+		write(1, "argcInvalid\n", 15);
 		return (0);
 	}
 	read_map(&imgs, argv);
 	if (argv_check(argv) == 0 || check_errors(&imgs) == 0)
 	{
-		printf("MapError");
+		write(1, "MapError\n", 12);
 		return (0);
 	}
 	imgs.mlx = mlx_init(imgs.mlx);

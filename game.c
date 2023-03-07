@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:39:05 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/07 11:47:23 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:45:52 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	handle_keypress(int keycode, t_game *imgs)
 {
+  imgs->counter = imgs->move_counter;
+  
 	if (keycode == KEY_ESC || keycode == KEY_Q)
 		exit_game(imgs);
   if (keycode == KEY_W || keycode == KEY_UP)

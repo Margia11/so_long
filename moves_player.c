@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:50:28 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/07 11:10:14 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:51:39 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,12 @@ void	print_moves(t_game *imgs)
 	img_selector(imgs, 0, 1);
 	img_selector(imgs, 0, 0);
 	mlx_string_put(imgs->mlx, imgs->mlx_wind, 10, 15, 0xFF0000, "MOVES: ");
-	printf("%s", "MOVES: ");
 	mlx_string_put(imgs->mlx, imgs->mlx_wind, 80, 15, 0xFF0000, s);
-	printf("%s", s);
-	printf("\n");
+  if (imgs->counter != imgs->move_counter)
+  {
+	  ft_putstr("MOVES: ");
+	  ft_putstr( s);
+	  ft_putstr("\n");
+  }
 	free(s);
 }

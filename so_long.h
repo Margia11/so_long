@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:47:35 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/07 16:29:31 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:50:54 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_game
 	int		num_exit;
 	int		num_collect;
 	int		move_counter;
+	int		counter;
 	int		p_x;
 	int		p_y;
 	int		e_x;
@@ -86,4 +87,5 @@ int			exit_game(t_game *imgs);
 void		print_moves(t_game *imgs);
 // int 		animation(t_game *imgs);
 int			argv_check(char **argv);
+void 		ft_putstr(char *str);
 #endif

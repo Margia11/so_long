@@ -64,7 +64,7 @@ int	if_walls(t_game *imgs)
 	horizontalwalls = horizontalwall(imgs);
 	if (verticalwalls == 0 || horizontalwalls == 0)
 	{
-		printf("WallsMapInvalid\n");
+		write(1, "WallsMapInvalid\n", 19);
 		//exit_game(imgs);
 		return(0);
 	}
@@ -81,7 +81,7 @@ int	count_checker(t_game *imgs, int width, int height)
 		imgs->map[width][height] != 'C' &&
 		imgs->map[width][height] != 'N')
 	{
-		printf("ErrorElements\n");
+		write(1, "ErrorElements\n", 17);
 		//exit_game(imgs);
 		return(0);
 	}
@@ -113,7 +113,7 @@ int	character_valid(t_game *imgs)
 	if ((imgs->num_player != 1 || imgs->num_collect == 0
 			|| imgs->num_exit != 1))
 	{
-		printf("InvalidElements\n");
+		write(1, "InvalidElements\n", 19);
 		exit_game(imgs);
 	}
 	return (1);
