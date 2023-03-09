@@ -6,7 +6,7 @@
 #    By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 13:00:21 by amargiac          #+#    #+#              #
-#    Updated: 2023/03/07 15:12:54 by amargiac         ###   ########.fr        #
+#    Updated: 2023/03/09 15:13:35 by amargiac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SL_SRC	=	so_long.c\
 			moves_player.c \
 			game.c \
 			check_errors.c \
+			animation.c \
 
 
 HEADER = so_long.h
@@ -43,7 +44,7 @@ RM		=	rm -f
 MLX		=	./libmlx.dylib
 
 %.o: %.c
-			$(CC) ${CFLAGS} -Imlx -c $< -o $@ 
+			$(CC) ${CFLAGS} -Imlx -c $< -o $@
 
 all:		$(NAME)
 

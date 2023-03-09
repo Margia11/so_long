@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   imgs->map_checker.c                                      :+:      :+:    :+:   */
+/*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 10:51:39 by amargiac          #+#    #+#             */
-/*   Updated: 2023/02/23 15:35:55 by amargiac         ###   ########.fr       */
+/*   Created: 2023/03/09 15:04:21 by amargiac          #+#    #+#             */
+/*   Updated: 2023/03/09 15:04:37 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	horizontalwall(t_game *imgs)
 		i++;
 	while (imgs->map[0][j])
 	{
-		if (imgs->map[0][j] != '1' && imgs->map[i - 1][j] != '1')
+		if (imgs->map[0][j] != '1' || imgs->map[i - 1][j] != '1')
 		{
 			return (0);
 		}
@@ -40,12 +40,11 @@ int	verticalwall(t_game *imgs)
 
 	height = 0;
 	width = 0;
-
 	while (imgs->map[width][height])
 		height++;
 	while (imgs->map[width])
 	{
-		if (imgs->map[width][0] != '1' && imgs->map[width][height - 1] != '1')
+		if (imgs->map[width][0] != '1' || imgs->map[width][height - 1] != '1')
 		{
 			return (0);
 		}
@@ -65,15 +64,13 @@ int	if_walls(t_game *imgs)
 	if (verticalwalls == 0 || horizontalwalls == 0)
 	{
 		write(1, "WallsMapInvalid\n", 19);
-		//exit_game(imgs);
-		return(0);
+		exit(0);
 	}
 	return (1);
 }
 
-int	count_checker(t_game *imgs, int width, int height)
+void	count_checker(t_game *imgs, int width, int height)
 {
-	
 	if (imgs->map[width][height] != '1' &&
 		imgs->map[width][height] != '0' &&
 		imgs->map[width][height] != 'P' &&
@@ -82,8 +79,7 @@ int	count_checker(t_game *imgs, int width, int height)
 		imgs->map[width][height] != 'N')
 	{
 		write(1, "ErrorElements\n", 17);
-		//exit_game(imgs);
-		return(0);
+		exit(0);
 	}
 	if (imgs->map[width][height] == 'C')
 			imgs->num_collect++;
@@ -91,21 +87,23 @@ int	count_checker(t_game *imgs, int width, int height)
 			imgs->num_player++;
 	if (imgs->map[width][height] == 'E')
 			imgs->num_exit++;
-	return (1);
 }
 
 int	character_valid(t_game *imgs)
 {
 	int	height;
 	int	width;
+
 	width = 0;
+	imgs->num_collect = 0;
+	imgs->num_player = 0;
+	imgs->num_exit = 0;
 	while (imgs->map[width])
 	{
 		height = 0;
 		while (imgs->map[width][height])
 		{
-			if(count_checker(imgs, width, height) == 0)
-				return(0);
+			count_checker(imgs, width, height);
 			height++;
 		}
 		width++;
@@ -114,7 +112,7 @@ int	character_valid(t_game *imgs)
 			|| imgs->num_exit != 1))
 	{
 		write(1, "InvalidElements\n", 19);
-		exit_game(imgs);
+		exit(0);
 	}
 	return (1);
 }

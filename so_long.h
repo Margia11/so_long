@@ -6,21 +6,21 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:47:35 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/07 16:50:54 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:59:46 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include <stdlib.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <stddef.h>
-#include <string.h>
-#include "./minilibx/mlx.h"
-#include "./libft/libft.h"
+# include <stdlib.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stddef.h>
+# include <string.h>
+# include "./minilibx/mlx.h"
+# include "./libft/libft.h"
 
 # define KEY_ESC 53
 # define KEY_Q 12
@@ -62,30 +62,36 @@ typedef struct s_game
 	int		e_x;
 	int		e_y;
 	int		p_enemy;
+	int		enemy_frame;
 	int		loop;
+	int		x;
+	int		y;
 }	t_game;
 
 int			handle_keypress(int keycode, t_game *imgs);
 char		**read_map(t_game *imgs, char **argv);
-void		img_selector(t_game *imgs,int i, int j);
+void		img_selector(t_game *imgs, int i, int j);
 void		render(t_game *imgs);
-void		img_selector2(t_game *imgs,int i, int j);
+void		img_selector2(t_game *imgs, int i, int j);
 void		load_imgs(t_game *imgs);
 size_t		ft_strlen(const char *s);
 int			moveright(t_game *imgs);
 int			moveleft(t_game *imgs);
 int			moveup(t_game *imgs);
 int			movedown(t_game *imgs);
-int 		movecheck(t_game *imgs, int x_dest, int y_dest);
+int			movecheck(t_game *imgs, int x_dest, int y_dest);
 int			if_walls(t_game *imgs);
 int			verticalwall(t_game *imgs);
 int			horizontalwall(t_game *imgs);
 int			character_valid(t_game *imgs);
-int			check_errors(t_game *imgs);
-int			count_checker(t_game *imgs, int width, int height);
+void		check_errors(t_game *imgs);
+void		count_checker(t_game *imgs, int width, int height);
 int			exit_game(t_game *imgs);
 void		print_moves(t_game *imgs);
-// int 		animation(t_game *imgs);
 int			argv_check(char **argv);
-void 		ft_putstr(char *str);
+void		ft_putstr(char *str);
+int		print_frame(t_game *imgs);
+void		frame(t_game *imgs);
+int			animation_loop(t_game *imgs);
+void	*build_img(void *mlx, char *path);
 #endif
