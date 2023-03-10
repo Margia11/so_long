@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:23:05 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/09 16:12:00 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:10:57 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	main(int argc, char **argv)
 	}
 	argv_check(argv);
 	imgs.mlx = mlx_init(imgs.mlx);
+	imgs.move_counter = 0;
 	read_map(&imgs, argv);
 	check_errors(&imgs);
 	imgs.mlx_wind = mlx_new_window(imgs.mlx, imgs.map_w * 64, \

@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:41:34 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/09 17:00:50 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:34:53 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	load_imgs(t_game *imgs)
 {
-	imgs->x = 0;
-	imgs->y = 0;
 	imgs->backg = mlx_xpm_file_to_image(imgs->mlx, "./images/backg.xpm", \
 		&imgs->img_w, &imgs->img_h);
 	imgs->player = mlx_xpm_file_to_image(imgs->mlx, "./images/player.xpm", \
@@ -25,8 +23,6 @@ void	load_imgs(t_game *imgs)
 	imgs->exit = mlx_xpm_file_to_image(imgs->mlx, "./images/door1.xpm", \
 		&imgs->img_w, &imgs->img_h);
 	imgs->enemy = mlx_xpm_file_to_image(imgs->mlx, "./images/enemy.xpm", \
-		&imgs->img_w, &imgs->img_h);
-	imgs->enemy1 = mlx_xpm_file_to_image(imgs->mlx, "./images/enemy1.xpm", \
 		&imgs->img_w, &imgs->img_h);
 	imgs->wall = mlx_xpm_file_to_image(imgs->mlx, "./images/wall.xpm", \
 		&imgs->img_w, &imgs->img_h);
@@ -50,6 +46,7 @@ void	render(t_game *imgs)
 		i++;
 	}
 }
+
 void	*build_img(void *mlx, char *path)
 {
 	int		img_width;

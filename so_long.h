@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:47:35 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/09 16:59:46 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:42:05 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,7 @@ int			exit_game(t_game *imgs);
 void		print_moves(t_game *imgs);
 int			argv_check(char **argv);
 void		ft_putstr(char *str);
-int		print_frame(t_game *imgs);
+int			print_frame(t_game *imgs);
 void		frame(t_game *imgs);
-int			animation_loop(t_game *imgs);
-void	*build_img(void *mlx, char *path);
+void		*build_img(void *mlx, char *path);
 #endif
